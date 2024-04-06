@@ -11,6 +11,7 @@ export const COST_PER_UNINIT_TICK = BigNumber.from(0);
 export const BASE_SWAP_COST = (id: ChainId): BigNumber => {
   switch (id) {
     case ChainId.MAINNET:
+    case ChainId.NOVA:
     case ChainId.GOERLI:
     case ChainId.SEPOLIA:
     case ChainId.OPTIMISM:
@@ -20,10 +21,6 @@ export const BASE_SWAP_COST = (id: ChainId): BigNumber => {
     case ChainId.AVALANCHE:
     case ChainId.BASE:
     case ChainId.BASE_GOERLI:
-    case ChainId.ZORA:
-    case ChainId.ZORA_SEPOLIA:
-    case ChainId.ROOTSTOCK:
-    case ChainId.BLAST:
       return BigNumber.from(2000);
     case ChainId.ARBITRUM_ONE:
     case ChainId.ARBITRUM_GOERLI:
@@ -57,11 +54,6 @@ export const COST_PER_INIT_TICK = (id: ChainId): BigNumber => {
     case ChainId.OPTIMISM_SEPOLIA:
     case ChainId.BASE:
     case ChainId.BASE_GOERLI:
-    case ChainId.ZORA:
-    case ChainId.ZORA_SEPOLIA:
-    case ChainId.ROOTSTOCK:
-    case ChainId.BLAST:
-      return BigNumber.from(31000);
     case ChainId.ARBITRUM_ONE:
     case ChainId.ARBITRUM_GOERLI:
     case ChainId.ARBITRUM_SEPOLIA:
@@ -77,11 +69,13 @@ export const COST_PER_INIT_TICK = (id: ChainId): BigNumber => {
     case ChainId.MOONBEAM:
       return BigNumber.from(31000);
   }
+  return BigNumber.from(0);
 };
 
 export const COST_PER_HOP = (id: ChainId): BigNumber => {
   switch (id) {
     case ChainId.MAINNET:
+    case ChainId.NOVA:
     case ChainId.GOERLI:
     case ChainId.SEPOLIA:
     case ChainId.BNB:
@@ -91,10 +85,6 @@ export const COST_PER_HOP = (id: ChainId): BigNumber => {
     case ChainId.AVALANCHE:
     case ChainId.BASE:
     case ChainId.BASE_GOERLI:
-    case ChainId.ZORA:
-    case ChainId.ZORA_SEPOLIA:
-    case ChainId.ROOTSTOCK:
-    case ChainId.BLAST:
       return BigNumber.from(80000);
     case ChainId.ARBITRUM_ONE:
     case ChainId.ARBITRUM_GOERLI:
@@ -111,6 +101,7 @@ export const COST_PER_HOP = (id: ChainId): BigNumber => {
     case ChainId.MOONBEAM:
       return BigNumber.from(80000);
   }
+  return BigNumber.from(0);
 };
 
 export const SINGLE_HOP_OVERHEAD = (_id: ChainId): BigNumber => {

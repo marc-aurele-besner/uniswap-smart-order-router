@@ -20,7 +20,7 @@ import {
   DAI_OPTIMISM_GOERLI,
   DAI_OPTIMISM_SEPOLIA,
   DAI_POLYGON_MUMBAI,
-  DAI_SEPOLIA, USDB_BLAST,
+  DAI_SEPOLIA,
   USDC_ARBITRUM,
   USDC_ARBITRUM_GOERLI,
   USDC_ARBITRUM_SEPOLIA,
@@ -39,6 +39,7 @@ import {
   USDC_NATIVE_CELO,
   USDC_NATIVE_OPTIMISM,
   USDC_NATIVE_POLYGON,
+  USDC_NOVA,
   USDC_OPTIMISM,
   USDC_OPTIMISM_GOERLI,
   USDC_OPTIMISM_SEPOLIA,
@@ -73,6 +74,7 @@ import {
 // DAI_AVAX has 18 decimals and comes before USDC_AVAX which has 6 decimals.
 export const usdGasTokensByChain: { [chainId in ChainId]?: Token[] } = {
   [ChainId.MAINNET]: [DAI_MAINNET, USDC_MAINNET, USDT_MAINNET],
+  [ChainId.NOVA]: [USDC_NOVA],
   [ChainId.ARBITRUM_ONE]: [
     DAI_ARBITRUM,
     USDC_ARBITRUM,
@@ -113,7 +115,6 @@ export const usdGasTokensByChain: { [chainId in ChainId]?: Token[] } = {
     USDC_BRIDGED_AVAX,
   ],
   [ChainId.BASE]: [USDC_BASE, USDC_NATIVE_BASE],
-  [ChainId.BLAST]: [USDB_BLAST],
 };
 
 export type L1ToL2GasCosts = {
