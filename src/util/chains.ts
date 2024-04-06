@@ -23,7 +23,7 @@ export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.BNB,
   ChainId.AVALANCHE,
   ChainId.BASE,
-  ChainId.BLAST,
+  ChainId.NOVA,
   // Gnosis and Moonbeam don't yet have contracts deployed yet
 ];
 
@@ -47,7 +47,7 @@ export const HAS_L1_FEE = [
   ChainId.ARBITRUM_SEPOLIA,
   ChainId.BASE,
   ChainId.BASE_GOERLI,
-  ChainId.BLAST,
+  ChainId.NOVA,
 ];
 
 export const NETWORKS_WITH_SAME_UNISWAP_ADDRESSES = [
@@ -99,8 +99,8 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
       return ChainId.BASE;
     case 84531:
       return ChainId.BASE_GOERLI;
-    case 81457:
-      return ChainId.BLAST;
+    case 490000:
+      return ChainId.NOVA;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -132,6 +132,7 @@ export enum ChainName {
 export enum NativeCurrencyName {
   // Strings match input for CLI
   ETHER = 'ETH',
+  SSC = 'tSSC',
   MATIC = 'MATIC',
   CELO = 'CELO',
   GNOSIS = 'XDAI',
@@ -206,15 +207,11 @@ export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
     'ETHER',
     '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
   ],
-  [ChainId.BLAST]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
-  ],
 };
 
 export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
   [ChainId.MAINNET]: NativeCurrencyName.ETHER,
+  [ChainId.NOVA]: NativeCurrencyName.SSC,
   [ChainId.GOERLI]: NativeCurrencyName.ETHER,
   [ChainId.SEPOLIA]: NativeCurrencyName.ETHER,
   [ChainId.OPTIMISM]: NativeCurrencyName.ETHER,
@@ -232,7 +229,6 @@ export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
   [ChainId.BNB]: NativeCurrencyName.BNB,
   [ChainId.AVALANCHE]: NativeCurrencyName.AVALANCHE,
   [ChainId.BASE]: NativeCurrencyName.ETHER,
-  [ChainId.BLAST]: NativeCurrencyName.ETHER,
 };
 
 export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
@@ -320,8 +316,8 @@ export const ID_TO_PROVIDER = (id: ChainId): string => {
       return process.env.JSON_RPC_PROVIDER_AVALANCHE!;
     case ChainId.BASE:
       return process.env.JSON_RPC_PROVIDER_BASE!;
-    case ChainId.BLAST:
-      return process.env.JSON_RPC_PROVIDER_BLAST!;
+    case ChainId.NOVA:
+      return `https://nova-1.gemini-3h.subspace.network/ws`;
     default:
       throw new Error(`Chain id: ${id} not supported`);
   }
@@ -334,6 +330,13 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
     18,
     'WETH',
     'Wrapped Ether'
+  ),
+  [ChainId.NOVA]: new Token(
+    ChainId.NOVA,
+    '0xF9019F905f5828930094300D8949bDAc63B054EB',
+    18,
+    'WtSSC',
+    'Wrapped test SSC'
   ),
   [ChainId.GOERLI]: new Token(
     5,
@@ -459,34 +462,6 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
   [ChainId.BASE_GOERLI]: new Token(
     ChainId.BASE_GOERLI,
     '0x4200000000000000000000000000000000000006',
-    18,
-    'WETH',
-    'Wrapped Ether'
-  ),
-  [ChainId.ROOTSTOCK]: new Token(
-    ChainId.ROOTSTOCK,
-    '0x542fDA317318eBF1d3DEAf76E0b632741A7e677d',
-    18,
-    'WRBTC',
-    'Wrapped BTC'
-  ),
-  [ChainId.ZORA]: new Token(
-    ChainId.ZORA,
-    '0x4200000000000000000000000000000000000006',
-    18,
-    'WETH',
-    'Wrapped Ether'
-  ),
-  [ChainId.ZORA_SEPOLIA]: new Token(
-    ChainId.ZORA_SEPOLIA,
-    '0x4200000000000000000000000000000000000006',
-    18,
-    'WETH',
-    'Wrapped Ether'
-  ),
-  [ChainId.BLAST]: new Token(
-    ChainId.BLAST,
-    '0x4300000000000000000000000000000000000004',
     18,
     'WETH',
     'Wrapped Ether'

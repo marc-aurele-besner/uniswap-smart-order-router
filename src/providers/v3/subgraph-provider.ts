@@ -47,6 +47,8 @@ export const printV2SubgraphPool = (s: V2SubgraphPool) =>
 const SUBGRAPH_URL_BY_CHAIN: { [chainId in ChainId]?: string } = {
   [ChainId.MAINNET]:
     'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3',
+  [ChainId.NOVA]:
+    'https://subgraph.satsuma-prod.com/c74ef9357a5b/subspace/uniswap-v3-test/api',
   [ChainId.OPTIMISM]:
     'https://api.thegraph.com/subgraphs/name/ianlapham/optimism-post-regenesis',
   // todo: add once subgraph is live
@@ -67,7 +69,6 @@ const SUBGRAPH_URL_BY_CHAIN: { [chainId in ChainId]?: string } = {
     'https://api.thegraph.com/subgraphs/name/lynnshaoyu/uniswap-v3-avax',
   [ChainId.BASE]:
     'https://api.studio.thegraph.com/query/48211/uniswap-v3-base/version/latest',
-  [ChainId.BLAST]: 'https://gateway-arbitrum.network.thegraph.com/api/0ae45f0bf40ae2e73119b44ccd755967/subgraphs/id/2LHovKznvo8YmKC9ZprPjsYAZDCc4K5q4AYz8s3cnQn1',
 };
 
 const PAGE_SIZE = 1000; // 1k is max possible query size from subgraph.

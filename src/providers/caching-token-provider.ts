@@ -27,7 +27,6 @@ import {
   ETH_BNB,
   ITokenProvider,
   TokenAccessor,
-  USDB_BLAST,
   USDC_ARBITRUM,
   USDC_ARBITRUM_GOERLI,
   USDC_ARBITRUM_SEPOLIA,
@@ -37,6 +36,7 @@ import {
   USDC_ETHEREUM_GNOSIS,
   USDC_MAINNET,
   USDC_MOONBEAM,
+  USDC_NOVA,
   USDC_OPTIMISM,
   USDC_OPTIMISM_GOERLI,
   USDC_OPTIMISM_SEPOLIA,
@@ -81,6 +81,9 @@ export const CACHE_SEED_TOKENS: {
   },
   [ChainId.SEPOLIA]: {
     USDC: USDC_SEPOLIA,
+  },
+  [ChainId.NOVA]: {
+    USDC: USDC_NOVA,
   },
   [ChainId.OPTIMISM]: {
     USDC: USDC_OPTIMISM,
@@ -160,10 +163,6 @@ export const CACHE_SEED_TOKENS: {
   [ChainId.BASE]: {
     USDC: USDC_BASE,
     WETH: WRAPPED_NATIVE_CURRENCY[ChainId.BASE],
-  },
-  [ChainId.BLAST]: {
-    USDB: USDB_BLAST,
-    WETH: WRAPPED_NATIVE_CURRENCY[ChainId.BLAST],
   },
   // Currently we do not have providers for Moonbeam mainnet or Gnosis testnet
 };

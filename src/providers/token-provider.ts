@@ -117,6 +117,13 @@ export const USDC_GOERLI = new Token(
   'USDC',
   'USD//C'
 );
+export const USDC_NOVA = new Token(
+  ChainId.GOERLI,
+  '0x07865c6e87b9f70255377e024ace6630c1eaa37f',
+  6,
+  'USDC',
+  'USD//C'
+);
 export const USDT_GOERLI = new Token(
   ChainId.GOERLI,
   '0xe583769738b6dd4e7caf8451050d1948be717679',
@@ -646,15 +653,6 @@ export const WBTC_MOONBEAM = new Token(
   'WBTC',
   'Wrapped BTC bridged using Multichain'
 );
-
-// Blast Tokens
-export const USDB_BLAST = new Token(
-  ChainId.BLAST,
-  '0x4300000000000000000000000000000000000003',
-  18,
-  'USDB',
-  'USD Blast'
-)
 
 export class TokenProvider implements ITokenProvider {
   constructor(
